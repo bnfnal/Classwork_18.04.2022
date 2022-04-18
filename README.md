@@ -33,3 +33,31 @@ Given the a list of numbers, return the list so that the values increment by 1 f
              return rangeClosed(numbers[0], numbers[numbers.length - 1]).toArray(); 
          } 
       }
+      
+
+ 
+## Task 2: Bit Counting 
+ 
+### Class:  
+                BitCounting
+### Function:    
+                countBits(int n)
+ 
+### Task: 
+ 
+Write a function that takes an integer as input, and returns the number of bits that are equal to one in the binary representation of that number. 
+You can guarantee that input is non-negative.
+Example: The binary representation of 1234 is 10011010010, so the function should return 5 in this case
+ 
+### Favorite solution: 
+ 
+ 
+      public class BitCounting 
+      {
+         public static int countBits(int n)
+         {
+            int ret = n % 2;
+            while ((n /= 2) > 0) ret += n % 2;
+            return ret;
+         }
+      }
