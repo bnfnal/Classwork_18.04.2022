@@ -29,11 +29,23 @@ public class Main
         
         System.out.println("Task 2: Bit Counting");
         System.out.println("Введите натуральное число");
-        int n = sc.nextInt();
+        int x = sc.nextInt();
         System.out.print("Количество единиц в двоичном представлении этого числа = ");
-        System.out.print(BitCounting.countBits(n));
+        System.out.print(BitCounting.countBits(x));
         System.out.println();
         System.out.println();
+        
+        // Task 3: Playing with digits
+        
+        System.out.println("Task 3: Playing with digits");
+        System.out.println("Введите натуральное число n");
+        int n = sc.nextInt();
+        System.out.println("Введите натуральное число p");
+        int p = sc.nextInt();
+        System.out.println("Существует ли целое число k, такое как: (a ^ p + b ^ (p+1) + c ^ (p+2) + d ^ (p+3) + ...) = n * k ?");
+        System.out.println(DigPow.digPow(n, p));
+        System.out.println();
+        
     }
     
     // Task 1: Lario and Muigi Pipe Problem
@@ -67,6 +79,36 @@ public class Main
           }
           return k;
 	    }
+    }
+    
+    // Task 3: Playing with digits
+    
+    public static class DigPow 
+    {
+       public static long digPow(int n, int p) 
+       {
+          int m = n;
+          int k =1;
+          int sum = 0;
+          int l = 0;
+          while(m>0)
+          {
+             m = m/10;
+             l += 1;
+          }
+          p += l-1;
+          m = n;
+          while(m>0)
+          {
+             k = 1;
+             for (int i=1; i<=p; i++) k *= m%10;
+             sum += k;
+             m = m/10;
+             p -= 1;
+          }
+          if (sum % n == 0) return (sum/n);
+          else return -1;
+        }
     }
     
 }
